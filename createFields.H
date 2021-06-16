@@ -1,3 +1,26 @@
+// The Fist 16 added lines are a new transport property related to the thermal diffusion which will be denoted
+// as DT. The last 13 added lines are the creation of the temperature Field, T.
+// Added lines --- beginning
+Info<< "Reading transportProperties\n" <<  endl;
+
+IOdictionary transportProperties
+(
+    IOobject
+    (
+        "transportProperties",
+	runTime.constant(),
+	mesh,
+	IOobject::MUST_READ,
+	IOobject::NO_WRITE
+    )
+);
+
+dimensionedScalar DT
+(
+    transportProperties.lookup("DT")
+);
+// Added lines --- end
+
 Info<< "Reading field p_rgh\n" << endl;
 volScalarField p_rgh
 (
@@ -12,6 +35,23 @@ volScalarField p_rgh
     mesh
 );
 
+//Adding lines --- beginning
+Info<< "Reading field T\n" << endl;
+volScalarField T
+(
+    IOobject
+    (
+        "T",
+		runTime.timeName(),
+		mesh,
+		IOobject::MUST_READ,
+		IOobject::AUTO_WRITE
+    ),
+    mesh
+);
+//Added lines --- End
+//Added lines --- beginning 
+	
 Info<< "Reading field U\n" << endl;
 volVectorField U
 (

@@ -97,7 +97,7 @@ int main(int argc, char *argv[])
                 dimensionedScalar("0", dimMass/dimTime, 0)
             );
 
-            mixture->correct();
+            // mixture->correct();   Check for change
 
             #include "alphaEqnSubCycle.H"
             interface.correct();
@@ -115,7 +115,10 @@ int main(int argc, char *argv[])
                 turbulence->correct();
             }
         }
-
+		
+		#include "TEqn.H"    // Temperature transport equation
+		mixture->correct();	  // Check for change
+		
         runTime.write();
 
         Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
