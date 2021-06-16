@@ -50,8 +50,27 @@ volScalarField T
     mesh
 );
 //Added lines --- End
-//Added lines --- beginning 
+
+
+//Added lines --- beginning 	
+Info<< "Creating field pSat\n" << endl;
+volScalarField pSat
+(
+    IOobject
+    (
+        "pSat",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::AUTO_WRITE
+    ),
+    p_rgh  // initial value will be overwritten by calcPSatField.H
+);
+#include "calcPSatField.H"
+Info << "pSat.dimensions() " << pSat.dimensions() <<"\n";
+//Added lines --- End
 	
+
 Info<< "Reading field U\n" << endl;
 volVectorField U
 (

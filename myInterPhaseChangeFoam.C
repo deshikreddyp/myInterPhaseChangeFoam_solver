@@ -117,6 +117,8 @@ int main(int argc, char *argv[])
         }
 		
 		#include "TEqn.H"    // Temperature transport equation
+		#include "calcPSatField.H"  //In order to update the saturation pressure Field which depends on T the -
+		//-following line must be included in myInterPhaseChangeFoam.C after #include "TEqn.H".		
 		mixture->correct();	  // Check for change
 		
         runTime.write();

@@ -62,10 +62,10 @@ protected:
     // Protected data
 
         dictionary phaseChangeTwoPhaseMixtureCoeffs_;
-
+/* remove these lines
         //- Saturation vapour pressure
         dimensionedScalar pSat_;
-
+*/
 
     // Private Member Functions
 
@@ -125,11 +125,20 @@ public:
 
     // Member Functions
 
-        //- Return const-access to the saturation vapour pressure
+/*        //- Return const-access to the saturation vapour pressure
         const dimensionedScalar& pSat() const
         {
             return pSat_;
         }
+remove these lines too */
+
+		//- Return const-access to the saturation vapour pressure
+		const volScalarField& pSat() const
+		{
+			const volScalarField& pSat = alpha1_.db().lookupObject<volScalarField>("pSat");
+			return pSat;
+		}
+// Lines added
 
         //- Return the mass condensation and vaporisation rates as a
         //  coefficient to multiply (1 - alphal) for the condensation rate
