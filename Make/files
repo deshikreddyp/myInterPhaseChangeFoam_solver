@@ -1,3 +1,3 @@
-interPhaseChangeFoam.C
+myInterPhaseChangeFoam.C
 
-EXE = $(FOAM_APPBIN)/interPhaseChangeFoam
+EXE = $(FOAM_APPBIN)/myInterPhaseChangeFoam
