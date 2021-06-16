@@ -2,7 +2,6 @@
 // as DT. The last 13 added lines are the creation of the temperature Field, T.
 // Added lines --- beginning
 Info<< "Reading transportProperties\n" <<  endl;
-
 IOdictionary transportProperties
 (
     IOobject
