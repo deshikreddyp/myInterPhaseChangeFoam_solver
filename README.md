@@ -7,4 +7,4 @@ Solver for 2 incompressible, isothermal immiscible fluids with phase-change (e.g
 - Turbulence modelling is generic, i.e. laminar, RAS or LES may be selected.
 ![Image](https://cpp.openfoam.org/v8/dir_072f0e2674ae04115e1196cfcbf8d2aa_dep.png)
 
-Reference: OpenFOAM V6.0
+Source: OpenFOAM V6.0
