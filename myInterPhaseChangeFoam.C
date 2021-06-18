@@ -83,9 +83,9 @@ int main(int argc, char *argv[])
         // --- Pressure-velocity PIMPLE corrector loop
         while (pimple.loop())
         {
-            #include "alphaControls.H"
+            #include "alphaControls.H"      // includes alpha initialization
 
-            surfaceScalarField rhoPhi
+            surfaceScalarField rhoPhi       // defining rhoPhi
             (
                 IOobject
                 (
@@ -99,15 +99,15 @@ int main(int argc, char *argv[])
 
             // mixture->correct();   Check for change
 
-            #include "alphaEqnSubCycle.H"
+            #include "alphaEqnSubCycle.H"   // includes writing of densities and calculating alpha
             interface.correct();
 
-            #include "UEqn.H"
+            #include "UEqn.H"               // rhoPhi variable is used, momentum equations solving thus velocities
 
             // --- Pressure corrector loop
             while (pimple.correct())
             {
-                #include "pEqn.H"
+                #include "pEqn.H"           // includes UEqn, p_rgh, rho
             }
 
             if (pimple.turbCorr())
@@ -116,7 +116,7 @@ int main(int argc, char *argv[])
             }
         }
 		
-		#include "TEqn.H"    // Temperature transport equation
+		#include "TEqn.H"    // Temperature transport equation includes only Phi and DT
 		#include "calcPSatField.H"  //In order to update the saturation pressure Field which depends on T the -
 		//-following line must be included in myInterPhaseChangeFoam.C after #include "TEqn.H".		
 		mixture->correct();	  // Check for change
